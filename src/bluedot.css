@@ -38,7 +38,8 @@ http://responsv.com/flexible-math/
 	/* font-family: 'PT Sans', sans-serif; */
 }
 body {
-    background-color: #f5f5f5;
+    background-color: #000000;
+    color: #ffffff;
 }
 a {
     text-decoration: none;
@@ -144,6 +145,12 @@ img {
     @media (min-width: 728px) {
         .col-2 {
             width: 50%;
+        }
+        .col-img {
+            width: 20%;
+        }
+        .col-conteudo {
+            width: 80%;
         }
     }
 
@@ -323,6 +330,14 @@ td {
     color: #000000;
 }
 
+/* Cor da Marvel */
+.marvel-background {
+    background: #f0141e;
+}
+.marvel-text {
+    color: #f0141e;
+}
+
 /* Tipografia básica com fontes modernas do GoogleFonts */
 .nobile {
 	font-family: 'Nobile', sans-serif !important;
@@ -386,5 +401,5 @@ p {
     /* height: 95.833333%; 920/960px */
 }
 a:hover {
-    color: #9e9e9e;
+    background: #f0141e !important; 
 }
