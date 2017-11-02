@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './bluedot.css';
 import Character from './Character';
+import CharacterForm from './CharacterForm';
 import jQuery from 'jquery';
 
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
                             </div>
                         </div>
                     </header>
+                    <CharacterForm/>
                     {characters}
                 </div>
             
@@ -57,12 +59,27 @@ class App extends Component {
         });
     }
 
+    _excluirCharacter(characterId) {
+        const characters = [...this.state.characters];
+
+        for(var i = 0; i < characters.length; i++) {
+            if(characters[i].id === characterId) {
+                characters.splice(i, 1);
+                this.setState({characters});
+                return true;
+            }
+        }
+        return false;
+    }
+
     _getCharacters() {
         return this.state.characters.map( character => 
             <Character 
                 nome={character.name} 
                 descricao={character.description} 
-                imgUrl={character.thumbnail.path + '/standard_medium.' + character.thumbnail.extension} 
+                imgUrl={character.thumbnail.path + '/standard_medium.' + character.thumbnail.extension}
+                onDelete={this._excluirCharacter.bind(this)} 
+                id={character.id}
                 key={character.id} />);
     }
 }
