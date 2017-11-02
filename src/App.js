@@ -1,46 +1,70 @@
 import React, { Component } from 'react';
-import Character from './img/standard_medium100x100.jpg'
 import './bluedot.css';
+import Character from './Character';
+import jQuery from 'jquery';
 
 class App extends Component {
-  render() {
-    return (
-        <div className="bloco text-center">
-            <div className="row">
-                <div className="col col-img">
-                    <img src={Character} alt="Marvel"/>
+    componentWillMount() {
+        this._buscarCharacters();
+    }
+
+    constructor() {
+        super();
+        this.state = {
+            characters: [
+                // {id: 1, name: 'Spider', description: 'O fanstástico homem com teias.'},
+                // {id: 2, name: 'SuperMan', description: 'O incrível homem de aço.'}
+            ]
+        }
+    }
+
+    render() {
+            const characters = this._getCharacters();
+
+            return (
+                <div className="container box">
+                    <header>
+                        <div className="row text-center">
+                            <div className="col">
+                                <h1 className="marvel-background">Marveldex</h1>
+                            </div>
+                            <div className="col">
+                                <nav id="menu">
+                                    <ul className="text-center">
+                                        <li><a href="#" className="blue dark white-text">Characters</a></li>
+                                        <li><a href="#" className="blue dark white-text">Comics</a></li>
+                                        <li><a href="#" className="blue dark white-text">Creators</a></li>
+                                        <li><a href="#" className="blue dark white-text">Series</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </header>
+                    {characters}
                 </div>
-                <div className="col col-conteudo">
-                    <div className="col">
-                        <h3 className="marvel-text">A-Bomb (HAS)</h3>
-                    </div>
-                    <div className="col">
-                        <p>Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...
-                                he's a teammate! Transformed by a Gamma energy explosion, A-Bomb's thick, armored skin is just as 
-                                strong and powerful as it is blue. And when he curls into action, he uses it like a giant bowling 
-                                ball of destruction!</p>
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col col-img">
-                    <img src="https://yt3.ggpht.com/-058HlQo6Dfc/AAAAAAAAAAI/AAAAAAAAAAA/h3mTqyvMa8E/s100-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="Marvel"/>
-                </div>
-                <div className="col col-conteudo">
-                    <div className="col">
-                        <h3 className="marvel-text">A-Bomb (HAS)</h3>
-                    </div>
-                    <div className="col">
-                        <p>Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...
-                                he's a teammate! Transformed by a Gamma energy explosion, A-Bomb's thick, armored skin is just as 
-                                strong and powerful as it is blue. And when he curls into action, he uses it like a giant bowling 
-                                ball of destruction!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-  }
+            
+        );
+    }
+
+    _buscarCharacters() {
+        jQuery.ajax({
+            method: 'GET',
+            url: 'http://gateway.marvel.com/v1/public/characters?ts=1&apikey=eb2d792694eb6e3887b538b8a31aae4b&hash=eea377918903899ba83ec96305af1b64',
+            success: (json) => {
+                let characters = json.data.results;
+                this.setState({characters})
+            }
+        });
+    }
+
+    _getCharacters() {
+        return this.state.characters.map( character => 
+            <Character 
+                nome={character.name} 
+                descricao={character.description} 
+                imgUrl={character.thumbnail.path + '/standard_medium.' + character.thumbnail.extension} 
+                key={character.id} />);
+    }
 }
 
 export default App;
