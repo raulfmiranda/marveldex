@@ -31,7 +31,7 @@ class CharacterForm extends Component {
         event.preventDefault();
         let name = this._name.value;
         let description = this._description.value;
-        // this.props.adicionarEstoria(name, description);
+        this.props.adicionarCharacter(name, description);
     }
 }
 

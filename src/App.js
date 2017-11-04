@@ -41,7 +41,7 @@ class App extends Component {
                             </div>
                         </div>
                     </header>
-                    <CharacterForm/>
+                    <CharacterForm adicionarCharacter={this._adicionarCharacter.bind(this)}/>
                     {characters}
                 </div>
             
@@ -81,6 +81,22 @@ class App extends Component {
                 onDelete={this._excluirCharacter.bind(this)} 
                 id={character.id}
                 key={character.id} />);
+    }
+
+    _adicionarCharacter(name, description) {
+        
+        const character = {
+            id:this.state.characters.length, 
+            name:name, 
+            description:description,
+            thumbnail : {
+                path: 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available',
+                extension: 'jpg'
+            }
+        };
+
+        this.state.characters.unshift(character);
+        this.setState({characters:this.state.characters});
     }
 }
 
