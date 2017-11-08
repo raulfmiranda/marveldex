@@ -37,7 +37,7 @@ class Character extends Component {
         return (
             <div className="bloco grey dark">
                 <div className="row">
-                    <div className="col col-img">
+                    <div className="col col-img text-center">
                         <div className="col">
                             {imagem}
                         </div>
@@ -46,7 +46,7 @@ class Character extends Component {
                         </div>
                     </div>
                     <div className="col col-conteudo">
-                        <div className="col">
+                        <div className="col text-center">
                             <h3 className="marvel-text">{this.props.nome}</h3>
                         </div>
                         <div className="col">
