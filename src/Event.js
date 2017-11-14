@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import Pic from './img/standard_medium100x100.jpg';
 
-class Character extends Component {
+
+class Event extends Component {
     constructor() {
         super();
 
         this.state = {
-            exibirCharacter: false
+            exibirEvent: false
         }
     }
 
     _handleClick(event) {
         event.preventDefault();
         this.setState({
-            exibirCharacter: !this.state.exibirCharacter
+            exibirEvent: !this.state.exibirEvent
         });
     }
 
@@ -25,12 +26,12 @@ class Character extends Component {
 
     render() {
         let descricao, imagem;
-        let textoBotao = 'Show Character';
+        let textoBotao = 'Show Event';
 
-        if(this.state.exibirCharacter) {
+        if(this.state.exibirEvent) {
             descricao = <p>{this.props.descricao}</p>;
             imagem = <img src={this.props.imgUrl} alt="Marvel"/>;
-            textoBotao = "Hide Character";
+            textoBotao = "Hide Event";
         }
 
         return (
@@ -63,4 +64,4 @@ class Character extends Component {
     
 }
 
-export default Character;
+export default Event;
