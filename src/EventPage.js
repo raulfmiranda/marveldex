@@ -20,7 +20,7 @@ class EventPage extends Component {
     }
 
     render() {
-            const events = this._getEvents();
+        const events = this._getEvents();
 
         return (
             <div classtitle="container box">
