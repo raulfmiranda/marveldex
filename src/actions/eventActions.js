@@ -6,16 +6,15 @@ export function createEvent(event) {
 }
 
 export function loadEvents() {
-    return function (dispatch) {
-      return eventApi.getAllEvents().then(events => {
-        dispatch(loadEventsSuccess(events.data));
-      }).catch(error => {
-        throw(error);
-      });
-    };
-  }
+  return function (dispatch) {
+    return eventApi.getAllEvents().then(events => {
+      dispatch(loadEventsSuccess(events.data.data.results));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
   
-  export function loadEventsSuccess(ev) {
-    let events = ev.data.results;
-    return { type: types.LOAD_EVENTS_SUCCESS, events };
-  }
+export function loadEventsSuccess(events) {
+  return { type: types.LOAD_EVENTS_SUCCESS, events };
+}

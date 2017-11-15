@@ -14,7 +14,7 @@ class App extends Component {
                 <Topo/>
                 <Switch>
                     <Route exact path="/" component={CharacterPage}/>
-                    <Route exact path="/events" component={EventPage}/>
+                    <Route path="/events" component={EventPage}/>
                 </Switch>
             </div>
         );
