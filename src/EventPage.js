@@ -21,7 +21,7 @@ class EventPage extends Component {
     }
 
     eventRow(event, index) {
-        return <div key={index}>{event.nome}</div>;
+        return <div key={index}>{event.title}</div>;
     }
 
     render() {

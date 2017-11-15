@@ -8,13 +8,14 @@ export function createEvent(event) {
 export function loadEvents() {
     return function (dispatch) {
       return eventApi.getAllEvents().then(events => {
-        dispatch(loadEventsSuccess(events.data.results));
+        dispatch(loadEventsSuccess(events.data));
       }).catch(error => {
         throw(error);
       });
     };
   }
   
-  export function loadEventsSuccess(events) {
+  export function loadEventsSuccess(ev) {
+    let events = ev.data.results;
     return { type: types.LOAD_EVENTS_SUCCESS, events };
   }
