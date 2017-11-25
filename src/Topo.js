@@ -13,8 +13,8 @@ class Topo extends Component {
                     <div className="col">
                         <nav id="menu">
                             <ul className="text-center">
-                                <li><Link to="/" className="blue dark white-text">Characters</Link></li>
-                                <li><Link to="/events" className="blue dark white-text">Events</Link></li>
+                                <li><Link to="/" className="blue dark white-text"> Characters (react) </Link></li>
+                                <li><Link to="/events" className="blue dark white-text"> Events (redux) </Link></li>
                             </ul>
                         </nav>
                     </div>

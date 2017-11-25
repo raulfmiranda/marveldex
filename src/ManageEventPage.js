@@ -8,10 +8,17 @@ class ManageEventPage extends Component {
     constructor() {
         super();
         this.state = {
-            event: Object.assign({}, this.props.event),
+            // event: Object.assign({}, this.props.event),
             redirect: false
         };
     }
+
+    // updateEventState(ev) {
+    //     const field = ev.target.name;
+    //     let event = Object.assign({}, this.state.event);
+    //     event[field] = ev.target.value;
+    //     return this.setState({ event: event });
+    // }
 
     render() {
         return (
